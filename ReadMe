@@ -1,0 +1,19 @@
+1.首先需要搞明白BeanFactory、BeanDefinition、ApplicationContext之间的关系
+    BeanFactory：生产Bean的工厂，提供getBean方法，解析生产的Bean可能是单例也可能是多例
+    BeanDefinition：bean定义，String scope（单例singleton 多例protoType）；
+                Class clazz(object.class)代表当前Bean 属于哪个class
+    ApplicationContext：容器（上下文），主导beanDefinition的生成，把BeanDefinition
+    传递（BeanDefinition注册,beanDefinitionRegister）给BeanFactory生产Bean
+
+2.开始仿写Spring源码
+
+
+
+
+
+
+
+
+
+
+
