@@ -42,6 +42,5 @@ public class AnnotatedBeanDefinitionReader {
         //beanDefinition创建完成后交给beanFactory注册
         //注册beanDefinition
         BeanDefinitionReaderUtils.registerBeanDefinition(beanDefinition,this.registry);
-
     }
 }

@@ -1,6 +1,5 @@
 package com.self.spring.applicationContext;
 
-import com.self.spring.beanDefinition.AnnotatedBeanDefinition;
 import com.self.spring.beanDefinition.AnnotatedBeanDefinitionReader;
 import com.self.spring.beanDefinition.BeanDefinitionRegistry;
 
@@ -30,15 +29,13 @@ public class AnnotationConfigApplicationContext
         //2.将类AppConfig注册到Bean工厂中（BeanDefinition+beanDefinitionRegister+factory）
         register(componentClass);
         //3.扫描路径，提取出路径下所有Bean，注册到Bean工厂（单例Bean初始化）
-
+        //refresh做为核心方法，需要放父类类中提供给所有的子类调用
+        refresh();
     }
 
     private void register(Class<?> componentClass) {
         this.reader.register(componentClass);
     }
 
-    @Override
-    public void registerBeanDefinition(String beanName, AnnotatedBeanDefinition beanDefinition) {
 
-    }
 }

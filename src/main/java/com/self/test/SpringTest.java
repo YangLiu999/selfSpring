@@ -17,6 +17,11 @@ public class SpringTest {
                 new AnnotationConfigApplicationContext(AppConfig.class);
 
         //调用getBean
-        //applicationContext.getBean("");
+        //多例：每次地址不一样
+        System.out.println(applicationContext.getBean("userService"));
+        System.out.println(applicationContext.getBean("userService"));
+        //单例：地址一样
+        System.out.println(applicationContext.getBean("userService1"));
+        System.out.println(applicationContext.getBean("userService1"));
     }
 }
