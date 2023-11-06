@@ -11,6 +11,10 @@ public class AnnotatedBeanDefinitionReader {
      * 注册器
      */
     private BeanDefinitionRegistry registry;
+
+    public AnnotatedBeanDefinitionReader(BeanDefinitionRegistry registry) {
+        this.registry = registry;
+    }
     /**
      * 注册，路径扫描这个Bean到BeanFactory中
      * @param componentClass

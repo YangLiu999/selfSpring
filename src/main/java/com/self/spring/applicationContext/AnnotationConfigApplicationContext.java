@@ -1,21 +1,26 @@
 package com.self.spring.applicationContext;
 
+import com.self.spring.beanDefinition.AnnotatedBeanDefinition;
 import com.self.spring.beanDefinition.AnnotatedBeanDefinitionReader;
+import com.self.spring.beanDefinition.BeanDefinitionRegistry;
 
 /**
  * ApplicationContext上下文
  * @author YL
  * @date 2023/11/02
  **/
-public class AnnotationConfigApplicationContext {
+public class AnnotationConfigApplicationContext
+        extends GenericApplicationContext
+        implements BeanDefinitionRegistry {
 
     private AnnotatedBeanDefinitionReader reader;
 
+
     /**
-     * 如果调用此无参构造器，需要先调用父类无参构造
+     * 隐式调用：如果调用此无参构造器，需要先调用父类无参构造,父类进行DefaultListableBeanFactory初始化
      */
     public AnnotationConfigApplicationContext(){
-        this.reader = new AnnotatedBeanDefinitionReader();
+        this.reader = new AnnotatedBeanDefinitionReader(this);
     }
 
     public AnnotationConfigApplicationContext(Class<?> componentClass) {
@@ -30,5 +35,10 @@ public class AnnotationConfigApplicationContext {
 
     private void register(Class<?> componentClass) {
         this.reader.register(componentClass);
+    }
+
+    @Override
+    public void registerBeanDefinition(String beanName, AnnotatedBeanDefinition beanDefinition) {
+
     }
 }
